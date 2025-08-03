@@ -1,0 +1,280 @@
+:root {
+    /* Colori base e accenti */
+    --bg-light: #f4f4f8;
+    --text-light: #1a1a1a;
+    --accent-light: #007aff;
+    --accent-light-hover: #40a2d0;
+    --gradient-gemini-light-1: #4285f4;
+    --gradient-gemini-light-2: #34a853;
+    --gradient-gemini-light-3: #fbbc05;
+    --gradient-gemini-light-4: #ea4335;
+
+    --bg-dark: #0a0f1a;
+    --text-dark: #e0e0e0;
+    --accent-dark: #40a2d0;
+    --accent-dark-hover: #70b3d8;
+    --gradient-gemini-dark-1: #669dff;
+    --gradient-gemini-dark-2: #85c893;
+    --gradient-gemini-dark-3: #f8d580;
+    --gradient-gemini-dark-4: #f49287;
+
+    /* Colori per il cursore */
+    --cursor-light: #007aff;
+    --cursor-dark: #ffffff;
+    --cursor-link-hover: #fbbc05; /* Giallo sui link */
+}
+
+body {
+    --bg-color: var(--bg-light);
+    --text-color: var(--text-light);
+    --accent-color: var(--accent-light);
+    --accent-color-hover: var(--accent-light-hover);
+    --gradient-gemini-1: var(--gradient-gemini-light-1);
+    --gradient-gemini-2: var(--gradient-gemini-light-2);
+    --gradient-gemini-3: var(--gradient-gemini-light-3);
+    --gradient-gemini-4: var(--gradient-gemini-light-4);
+    
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+body[data-theme="dark"] {
+    --bg-color: var(--bg-dark);
+    --text-color: var(--text-dark);
+    --accent-color: var(--accent-dark);
+    --accent-color-hover: var(--accent-dark-hover);
+    --gradient-gemini-1: var(--gradient-gemini-dark-1);
+    --gradient-gemini-2: var(--gradient-gemini-dark-2);
+    --gradient-gemini-3: var(--gradient-gemini-dark-3);
+    --gradient-gemini-4: var(--gradient-gemini-dark-4);
+}
+
+/* Gradiente di sfondo animato (stile Gemini) */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg, 
+        var(--gradient-gemini-1), 
+        var(--gradient-gemini-2), 
+        var(--gradient-gemini-3), 
+        var(--gradient-gemini-4)
+    );
+    background-size: 400% 400%;
+    animation: animate-gradient 20s ease infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+@keyframes animate-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body[data-theme="dark"] .background-gradient {
+    opacity: 0.4;
+}
+
+/* Pattern Tech Dinamico */
+.tech-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, hsla(240, 100%, 70%, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 80% 80%, hsla(120, 100%, 60%, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 50% 50%, hsla(0, 100%, 70%, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 70% 30%, hsla(60, 100%, 70%, 0.3) 5px, transparent 5px);
+    background-size: 40px 40px;
+    animation: pattern-animation 30s linear infinite;
+    z-index: -1;
+    opacity: 0.5;
+    transform: translateZ(-1px) scale(1.01); /* Effetto parallasse leggero */
+    will-change: transform; /* Ottimizzazione per performance */
+}
+
+@keyframes pattern-animation {
+    0% { transform: translate(0, 0) translateZ(-1px) scale(1.01); }
+    100% { transform: translate(40px, 40px) translateZ(-1px) scale(1.01); }
+}
+
+body[data-theme="dark"] .tech-pattern {
+    background-image: 
+        radial-gradient(circle at 20% 20%, hsla(240, 100%, 80%, 0.2) 5px, transparent 5px),
+        radial-gradient(circle at 80% 80%, hsla(120, 100%, 70%, 0.2) 5px, transparent 5px),
+        radial-gradient(circle at 50% 50%, hsla(0, 100%, 80%, 0.2) 5px, transparent 5px),
+        radial-gradient(circle at 70% 30%, hsla(60, 100%, 70%, 0.2) 5px, transparent 5px);
+    opacity: 0.4;
+}
+
+/* Glass Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.8rem;
+    padding: 3rem;
+    box-shadow: 
+        0 15px 50px 0 rgba(0, 0, 0, 0.1),
+        inset 0 2px 2px 0 rgba(255, 255, 255, 0.08);
+    max-width: 720px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    perspective: 1500px;
+}
+
+.glass-card.hoverable:hover {
+    transform: rotateY(6deg) translateX(15px) translateZ(30px) scale(1.03);
+    box-shadow: 
+        0 45px 90px 0 rgba(0, 0, 0, 0.2),
+        inset 0 2px 2px 0 rgba(255, 255, 255, 0.15);
+}
+
+body[data-theme="dark"] .glass-card {
+    background: rgba(10, 15, 28, 0.35);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Titolo */
+.typing-effect-container { /* Nuovo contenitore per il titolo */
+    display: inline-block; /* Assicura che occupi lo spazio necessario */
+    margin: 0 auto;
+}
+
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: .05em;
+    border-right: 0.15em solid transparent; /* Nasconde il cursore finché non viene animato */
+    animation: 
+        typing 3.5s steps(30, end) forwards, /* 'forwards' mantiene l'ultimo stato */
+        blink-caret .75s step-end infinite;
+    animation-delay: 0.5s; /* Inizia leggermente dopo il caricamento */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { color: transparent }
+    50% { color: var(--accent-color); }
+}
+
+h1 {
+    font-family: 'Lilita One', cursive;
+    font-weight: 400;
+    background: linear-gradient(45deg, var(--gradient-gemini-1), var(--gradient-gemini-2), var(--gradient-gemini-3), var(--gradient-gemini-4));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1.2rem;
+}
+
+h1.smaller-title {
+    font-size: 3rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 1.3rem 0;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+    border-bottom-color: var(--accent-color-hover);
+    color: var(--accent-color-hover);
+}
+
+/* Pulsante Theme Toggle */
+#theme-toggle {
+    position: fixed;
+    top: 35px;
+    right: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.08);
+}
+
+#theme-toggle .icon-dark { display: none; }
+body[data-theme="dark"] #theme-toggle .icon-dark { display: block; }
+body[data-theme="dark"] #theme-toggle .icon-light { display: none; }
+
+/* Stili per il cursore personalizzato */
+.custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--cursor-light); /* Colore iniziale */
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Importante: permette di cliccare sotto il cursore */
+    z-index: 9999;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Ombra leggera */
+}
+
+body[data-theme="dark"] .custom-cursor {
+    background-color: var(--cursor-dark);
+}
+
+/* Stili cursore per hover su elementi interattivi */
+body:not([data-theme="dark"]) .custom-cursor.hover-link,
+body:not([data-theme="dark"]) .custom-cursor.hover-button {
+    background-color: var(--cursor-link-hover); /* Giallo sui link in tema chiaro */
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+body[data-theme="dark"] .custom-cursor.hover-link,
+body[data-theme="dark"] .custom-cursor.hover-button {
+    background-color: var(--accent-dark-hover); /* Azzurro più chiaro sui link in tema scuro */
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Nasconde il cursore di default */
+body:not(.js-loaded) * { cursor: auto; } /* Mostra cursore default se JS non caricato */
+body.js-loaded #theme-toggle, body.js-loaded a { cursor: none; } /* Nasconde cursore default su elementi target */
+body.js-loaded .custom-cursor { display: block; } /* Mostra il nostro cursore */
